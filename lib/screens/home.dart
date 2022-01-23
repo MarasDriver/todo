@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
               width: MediaQuery.of(context).size.width - 11,
               height: 100.0,
               color: Colors.green,
-              child: TextFormField()),
+              child: TextFormField(),
             ),
           ),
           Padding(
