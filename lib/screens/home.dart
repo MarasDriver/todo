@@ -34,11 +34,7 @@ class HomePage extends StatelessWidget {
               width: MediaQuery.of(context).size.width - 11,
               height: 100.0,
               color: Colors.green,
-              child: MyTextWidget(
-                text: "input",
-                color: Colors.black,
-                size: 20.5,
-              ),
+              child: TextFormField()),
             ),
           ),
           Padding(
@@ -57,24 +53,28 @@ class HomePage extends StatelessWidget {
 
   Widget mytask(int index) {
     bool ischecked = false;
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Checkbox(value: ischecked, onChanged: (ischecked) {}),
-            MyTextWidget(
-              text: my_tasks[index].toString(),
-              color: Colors.red,
-              size: 25,
-            ),
-          ],
-        ),
-        Divider(
-          color: Colors.red,
-          thickness: 10,
-        )
-      ],
+    return Dismissible(
+      key: UniqueKey(),
+      // onDismissed: () {},
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Checkbox(value: ischecked, onChanged: (ischecked) {}),
+              MyTextWidget(
+                text: my_tasks[index].toString(),
+                color: Colors.red,
+                size: 25,
+              ),
+            ],
+          ),
+          Divider(
+            color: Colors.red,
+            thickness: 10,
+          )
+        ],
+      ),
     );
   }
 }
