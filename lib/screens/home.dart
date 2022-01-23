@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/widgets/text_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
-  List<String> my_tasks = [
-    "pranie1",
-    "pranie2",
-    "pranie3",
-  ];
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<Map> my_tasks = [];
+  Map<String, dynamic> my_firstmap = {
+    "Czekboks": false,
+    "Tekts": "test",
+  };
+  my_tasks.add(my_firstmap);
+
   TextEditingController controller = TextEditingController();
+
+  String my_input = "";
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +30,7 @@ class HomePage extends StatelessWidget {
           color: Colors.white,
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              print("Brawo");
-            },
-            icon: Icon(Icons.add),
-          )
+          my_add_button(),
         ],
       ),
       body: ListView(
@@ -36,25 +41,26 @@ class HomePage extends StatelessWidget {
               // height: 100.0,
               color: Colors.green,
               child: TextFormField(
-                onChanged: (string) {
-                  print(string);
-                },
+                // onChanged: (string) {
+                //   setState(() {
+                //     my_input = string;
+                //     my_tasks.add(my_input);
+                //   });
+                //   ;
+                // },
                 controller: controller,
                 minLines: 1,
                 maxLines: 5,
                 keyboardType: TextInputType.multiline,
                 decoration: InputDecoration(
-                    prefixIcon: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.add),
-                    ),
-                    border: InputBorder.none),
+                    prefixIcon: my_add_button(), border: InputBorder.none),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: my_tasks.length,
                 itemBuilder: (context, index) {
@@ -63,6 +69,18 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  IconButton my_add_button() {
+    return IconButton(
+      onPressed: () {
+        setState(() {
+          // my_tasks.add(controller.text);
+          controller.clear();
+        });
+      },
+      icon: Icon(Icons.add),
     );
   }
 
