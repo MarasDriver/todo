@@ -80,8 +80,11 @@ class _HomePageState extends State<HomePage> {
   IconButton my_add_button() {
     return IconButton(
       onPressed: () {
+        Map newmap = {};
+        newmap["Czekboks"] = false;
+        newmap["Tekts"] = controller.text;
         setState(() {
-          // my_tasks.add(controller.text);
+          my_tasks.add(newmap);
           controller.clear();
         });
       },
@@ -90,7 +93,6 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget mytask(int index) {
-    bool ischecked = false;
     return Dismissible(
       key: UniqueKey(),
       // onDismissed: () {},
@@ -99,7 +101,14 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Checkbox(value: ischecked, onChanged: (ischecked) {}),
+              Checkbox(
+                  value: my_tasks[index].values.elementAt(0),
+                  onChanged: (ischecked) {
+                    setState(() {
+                      bool boli = my_tasks[index].values.elementAt(0);
+                      my_tasks[index]["Czekboks"] = !boli;
+                    });
+                  }),
               MyTextWidget(
                 text: my_tasks[index].values.elementAt(1).toString(),
                 color: Colors.red,
