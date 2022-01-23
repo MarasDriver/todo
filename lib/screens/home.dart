@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/widgets/text_widget.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+  List<String> my_tasks = [
+    "pranie1",
+    "pranie2",
+    "pranie3",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,26 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: ListView(
-        children: [],
+        children: [
+          Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width - 11,
+              height: 100.0,
+              color: Colors.green,
+              child: MyTextWidget(
+                text: "input",
+                color: Colors.black,
+                size: 20.5,
+              ),
+            ),
+          ),
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: my_tasks.length,
+              itemBuilder: (context, index) {
+                return Text(index.toString());
+              })
+        ],
       ),
     );
   }
