@@ -10,15 +10,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<Map> my_tasks = [];
-  Map<String, dynamic> my_firstmap = {
-    "Czekboks": false,
-    "Tekts": "test",
-  };
 
   @override
   void initState() {
     super.initState();
-    my_tasks.add(my_firstmap);
   }
 
   TextEditingController controller = TextEditingController();
@@ -95,7 +90,10 @@ class _HomePageState extends State<HomePage> {
   Widget mytask(int index) {
     return Dismissible(
       key: UniqueKey(),
-      // onDismissed: () {},
+      onDismissed: (kierunkowy) {
+        if (kierunkowy == DismissDirection.startToEnd ||
+            kierunkowy == DismissDirection.endToStart) my_tasks.removeAt(index);
+      },
       child: Column(
         children: [
           Row(
