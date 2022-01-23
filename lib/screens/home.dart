@@ -7,18 +7,24 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-      centerTitle: true,
-      title: MyTextWidget(
-        text: 'Things to do:',
-        color: Colors.white,
+      appBar: AppBar(
+        centerTitle: true,
+        title: MyTextWidget(
+          text: 'Things to do:',
+          color: Colors.white,
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              print("Brawo");
+            },
+            icon: Icon(Icons.add),
+          )
+        ],
       ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.add),
-        )
-      ],
-    ));
+      body: ListView(
+        children: [],
+      ),
+    );
   }
 }
