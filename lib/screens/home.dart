@@ -14,7 +14,12 @@ class _HomePageState extends State<HomePage> {
     "Czekboks": false,
     "Tekts": "test",
   };
-  my_tasks.add(my_firstmap);
+
+  @override
+  void initState() {
+    super.initState();
+    my_tasks.add(my_firstmap);
+  }
 
   TextEditingController controller = TextEditingController();
 
@@ -96,7 +101,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Checkbox(value: ischecked, onChanged: (ischecked) {}),
               MyTextWidget(
-                text: my_tasks[index].toString(),
+                text: my_tasks[index].values.elementAt(1).toString(),
                 color: Colors.red,
                 size: 25,
               ),
