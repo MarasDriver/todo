@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
     "pranie2",
     "pranie3",
   ];
+  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +33,23 @@ class HomePage extends StatelessWidget {
           Center(
             child: Container(
               width: MediaQuery.of(context).size.width - 11,
-              height: 100.0,
+              // height: 100.0,
               color: Colors.green,
-              child: TextFormField(),
+              child: TextFormField(
+                onChanged: (string) {
+                  print(string);
+                },
+                controller: controller,
+                minLines: 1,
+                maxLines: 5,
+                keyboardType: TextInputType.multiline,
+                decoration: InputDecoration(
+                    prefixIcon: IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.add),
+                    ),
+                    border: InputBorder.none),
+              ),
             ),
           ),
           Padding(
@@ -69,7 +84,7 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
-          Divider(
+          const Divider(
             color: Colors.red,
             thickness: 10,
           )
