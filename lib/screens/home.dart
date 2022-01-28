@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:todo_app/widgets/text_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -102,9 +103,21 @@ class _HomePageState extends State<HomePage> {
               Checkbox(
                   value: my_tasks[index].values.elementAt(0),
                   onChanged: (ischecked) {
+                    // print(my_tasks[index]["Tekts"]);
                     setState(() {
                       bool boli = my_tasks[index].values.elementAt(0);
                       my_tasks[index]["Czekboks"] = !boli;
+                      if (my_tasks[index]["Czekboks"] = !boli) ;
+                      my_tasks[index]["Tekts"] =
+                          my_tasks[index]["Tekts"] + "SKREŚL KURWA";
+                      // my_tasks[index]["Tekts"].lineThrough;
+                      // new TextSpan(
+                      //     text: my_tasks[index]["Tekts"],
+                      //     style: const TextStyle(
+                      //       color: Colors.grey,
+                      //       decoration: TextDecoration.lineThrough,
+                      //     ));
+                      print(my_tasks[index]["Tekts"]);
                     });
                   }),
               MyTextWidget(
