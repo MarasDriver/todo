@@ -23,6 +23,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    my_tasks.sort(
+        (a, b) => a["Czekboks"].toString().compareTo(b["Czekboks"].toString()));
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -107,16 +109,6 @@ class _HomePageState extends State<HomePage> {
                     setState(() {
                       bool boli = my_tasks[index].values.elementAt(0);
                       my_tasks[index]["Czekboks"] = !boli;
-                      if (my_tasks[index]["Czekboks"] = !boli) ;
-                      my_tasks[index]["Tekts"] =
-                          my_tasks[index]["Tekts"] + "SKREŚL KURWA";
-                      // my_tasks[index]["Tekts"].lineThrough;
-                      // new TextSpan(
-                      //     text: my_tasks[index]["Tekts"],
-                      //     style: const TextStyle(
-                      //       color: Colors.grey,
-                      //       decoration: TextDecoration.lineThrough,
-                      //     ));
                       print(my_tasks[index]["Tekts"]);
                     });
                   }),
@@ -124,6 +116,7 @@ class _HomePageState extends State<HomePage> {
                 text: my_tasks[index].values.elementAt(1).toString(),
                 color: Colors.red,
                 size: 25,
+                checkbox: my_tasks[index]["Czekboks"],
               ),
             ],
           ),
